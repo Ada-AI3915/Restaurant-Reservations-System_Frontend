@@ -25,7 +25,7 @@ export default function SeatReservation({ tables, loadDashboard }) {
 
     setReservationsError(null);
 
-    listReservations(null, abortController.signal)
+    listReservations(abortController.signal)
       .then(setReservations)
       .catch(setReservationsError);
 

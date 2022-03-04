@@ -57,7 +57,7 @@ export default function NewReservation({ loadDashboard, edit }) {
     async function loadReservations() {
       const abortController = new AbortController();
 
-      return await listReservations(null, abortController.signal)
+      return await listReservations(abortController.signal)
         .then((response) =>
           response.find(
             (reservation) =>
