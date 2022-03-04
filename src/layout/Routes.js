@@ -5,6 +5,7 @@ import Dashboard from "../dashboard/Dashboard";
 import NewReservation from "../reservations/NewReservation";
 import NewTable from "../tables/NewTable";
 import NotFound from "./NotFound";
+import SeatReservation from "../reservations/SeatReservation";
 import { listReservations, listTables } from "../utils/api";
 import useQuery from "../utils/useQuery";
 import { today } from "../utils/date-time";
@@ -72,6 +73,10 @@ function Routes() {
 
       <Route path="/reservations/:reservation_id/edit">
         <NewReservation loadDashboard={loadDashboard} edit={true}/>
+      </Route>
+
+      <Route path="/reservations/:reservation_id/seat">
+        <SeatReservation tables={tables} loadDashboard={loadDashboard}/>
       </Route>
 
       <Route path="/tables/new">

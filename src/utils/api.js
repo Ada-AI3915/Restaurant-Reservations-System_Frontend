@@ -68,6 +68,11 @@ export async function listReservations(params, signal) {
     .then(formatReservationTime);
 }
 
+// export async function listReservations(signal) {
+//   const url = `${API_BASE_URL}/reservations`;
+
+//   return await fetchJson(url, { headers, signal, method: "GET" }, [])
+// }
 
 /** creates a reservation -> "POST"
  * 
@@ -100,7 +105,27 @@ export async function editReservation(reservation_id, reservation, signal) {
 }
 
 
+/** update a specified reservations status
+ * 
+ * @param {*} reservation_id 
+ * @param {*} status 
+ * @param {*} signal 
+ * @returns 
+ */
+export async function updateReservationStatus(reservation_id, status, signal) {
+  const url = `${API_BASE_URL}/reservations/${reservation_id}/status`;
 
+  const body = JSON.stringify({ data: { status: status }});
+
+  return await fetchJson(url, { headers, signal, method: "PUT", body }, []);
+}
+
+
+/** Lists all tables for the restaurant from the tables table
+ * 
+ * @param {*} signal 
+ * @returns 
+ */
 export async function listTables(signal) {
   const url = `${API_BASE_URL}/tables`
 
@@ -119,4 +144,12 @@ export async function createTable(table, signal) {
   const body = JSON.stringify({ data: table });
 
   return await fetchJson(url, { headers, signal, method: "POST", body }, []);
+}
+
+export async function seatTable(reservation_id, table_id, signal) {
+  const url = `${API_BASE_URL}/tables/${table_id}/seat`
+
+  const body = JSON.stringify({ data: {reservation_id: reservation_id } });
+
+  return await fetchJson(url, { headers, signal, method: "PUT", body }, []);
 }
