@@ -30,7 +30,14 @@ export default function NewReservation({ loadDashboard, edit }) {
     if (edit) {
       if (!reservation_id) return null;
 
-      loadReservations().then(fillFields);
+      loadReservations()
+        .then((response) =>
+          response.find(
+            (reservation) =>
+              reservation.reservation_id === Number(reservation_id)
+          )
+        )
+        .then(fillFields);
     }
 
     function fillFields(foundReservation) {
@@ -57,14 +64,9 @@ export default function NewReservation({ loadDashboard, edit }) {
     async function loadReservations() {
       const abortController = new AbortController();
 
-      return await listReservations(abortController.signal)
-        .then((response) =>
-          response.find(
-            (reservation) =>
-              reservation.reservation_id === Number(reservation_id)
-          )
-        )
-        .catch(setReservationsError);
+      return await listReservations(abortController.signal).catch(
+        setReservationsError
+      );
     }
   }, [edit, reservation_id]);
 
@@ -77,7 +79,6 @@ export default function NewReservation({ loadDashboard, edit }) {
       [target.name]:
         target.name === "people" ? Number(target.value) : target.value,
     });
-    console.log(formData);
   }
 
   /**

@@ -52,6 +52,7 @@ async function fetchJson(url, options, onCancel) {
   }
 }
 
+
 /**
  * Retrieves all existing reservation.
  * @returns {Promise<[reservation]>}
@@ -68,11 +69,6 @@ export async function listReservations(params, signal) {
     .then(formatReservationTime);
 }
 
-// export async function listReservations(signal) {
-//   const url = `${API_BASE_URL}/reservations`;
-
-//   return await fetchJson(url, { headers, signal, method: "GET" }, [])
-// }
 
 /** creates a reservation -> "POST"
  * 
@@ -146,6 +142,13 @@ export async function createTable(table, signal) {
   return await fetchJson(url, { headers, signal, method: "POST", body }, []);
 }
 
+/** seats a given reservaton at a given table
+ * 
+ * @param {*} reservation_id 
+ * @param {*} table_id 
+ * @param {*} signal 
+ * @returns 
+ */
 export async function seatTable(reservation_id, table_id, signal) {
   const url = `${API_BASE_URL}/tables/${table_id}/seat`
 
@@ -153,3 +156,16 @@ export async function seatTable(reservation_id, table_id, signal) {
 
   return await fetchJson(url, { headers, signal, method: "PUT", body }, []);
 }
+
+/** set a table to status = "finished"
+ * 
+ * @param {*} table_id 
+ * @param {*} signal 
+ * @returns 
+ */
+export async function finishTable(table_id, signal) {
+  const url = `${API_BASE_URL}/tables/${table_id}/seat`;
+
+  return await fetchJson(url, { headers, signal, method: "DELETE" }, []);
+}
+
