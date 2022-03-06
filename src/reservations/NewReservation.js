@@ -80,7 +80,6 @@ export default function NewReservation({ loadDashboard, edit }) {
       [target.name]:
         target.name === "people" ? Number(target.value) : target.value,
     });
-    console.log(formData.reservation_date)
   }
 
   /**
