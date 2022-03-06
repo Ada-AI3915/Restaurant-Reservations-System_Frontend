@@ -10,7 +10,7 @@ export default function TableRow({ table, loadDashboard }) {
   function handleFinish() {
     if (
       window.confirm(
-        "is this table ready to seat new guests? This cannot be undone."
+        "Is this table ready to seat new guests? This cannot be undone."
       )
     ) {
       const abortController = new AbortController();

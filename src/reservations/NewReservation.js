@@ -46,6 +46,7 @@ export default function NewReservation({ loadDashboard, edit }) {
       }
 
       const date = new Date(foundReservation.reservation_date);
+      console.log(date)
       const dateString = `${date.getFullYear()}-${(
         "0" +
         (date.getMonth() + 1)
@@ -79,6 +80,7 @@ export default function NewReservation({ loadDashboard, edit }) {
       [target.name]:
         target.name === "people" ? Number(target.value) : target.value,
     });
+    console.log(formData.reservation_date)
   }
 
   /**
