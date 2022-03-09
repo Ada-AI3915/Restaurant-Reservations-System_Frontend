@@ -28,9 +28,9 @@ export default function Search() {
 
   const searchResultsJSX = () => {
     return reservations.length > 0 ? (
-      reservations.map((reservation) => (
+      reservations.map((reservation, index) => (
         <ReservationRow
-          key={reservation.reservation_id}
+          key={index}
           reservation={reservation}
         />
       ))
