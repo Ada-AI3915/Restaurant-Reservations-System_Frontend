@@ -45,18 +45,18 @@ export default function NewReservation({ loadDashboard, edit }) {
         return <p>Only booked reservations can be edited.</p>;
       }
 
-      const date = new Date(foundReservation.reservation_date);
-      console.log(date)
-      const dateString = `${date.getFullYear()}-${(
-        "0" +
-        (date.getMonth() + 1)
-      ).slice(-2)}-${("0" + date.getDate()).slice(-2)}`;
+      // const date = new Date(foundReservation.reservation_date);
+      // console.log(date)
+      // const dateString = `${date.getFullYear()}-${(
+      //   "0" +
+      //   (date.getMonth() + 1)
+      // ).slice(-2)}-${("0" + date.getDate()).slice(-2)}`;
 
       setFormData({
         first_name: foundReservation.first_name,
         last_name: foundReservation.last_name,
         mobile_number: foundReservation.mobile_number,
-        reservation_date: dateString,
+        reservation_date: foundReservation.reservation_date,
         reservation_time: foundReservation.reservation_time,
         people: foundReservation.people,
       });
