@@ -90,7 +90,7 @@ export default function NewReservation({ loadDashboard, edit }) {
     const abortController = new AbortController();
 
     const foundErrors = [];
-    console.log(edit);
+    
     if (validateFields(foundErrors) && validateDate(foundErrors)) {
       if (edit) {
         editReservation(reservation_id, formData, abortController.signal)

@@ -22,9 +22,9 @@ function Dashboard({
   const history = useHistory();
 
   const reservationsJSX = () => {
-    return reservations.map((reservation, index) => (
+    return reservations.map((reservation) => (
       <ReservationRow
-        key={index}
+        key={reservation.reservation_id}
         reservation={reservation}
         loadDashboard={loadDashboard}
       />
@@ -32,9 +32,9 @@ function Dashboard({
   };
 
   const tablesJSX = () => {
-    return tables.map((table, index) => (
+    return tables.map((table) => (
       <TableRow
-        key={index}
+        key={table.table_id}
         table={table}
         loadDashboard={loadDashboard}
       />
