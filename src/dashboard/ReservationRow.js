@@ -21,7 +21,7 @@ export default function ReservationRow({ reservation, loadDashboard }) {
       updateReservationStatus(
         reservation.reservation_id,
         "cancelled",
-        abortController.status
+        abortController.signal
       ).then(loadDashboard);
 
       return () => abortController.abort();
