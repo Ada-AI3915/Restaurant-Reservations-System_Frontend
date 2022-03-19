@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import { today, formatAsTime } from "../utils/date-time";
 import ErrorAlert from "../layout/ErrorAlert";
 import {
   createReservation,
@@ -18,8 +19,8 @@ export default function NewReservation({ loadDashboard, edit }) {
     first_name: "",
     last_name: "",
     mobile_number: "",
-    reservation_date: "",
-    reservation_time: "",
+    reservation_date: today(),
+    reservation_time: formatAsTime(new Date().toTimeString()),
     people: 1,
   });
 
@@ -90,7 +91,7 @@ export default function NewReservation({ loadDashboard, edit }) {
     const abortController = new AbortController();
 
     const foundErrors = [];
-    
+
     if (validateFields(foundErrors) && validateDate(foundErrors)) {
       if (edit) {
         editReservation(reservation_id, formData, abortController.signal)
