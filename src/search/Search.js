@@ -49,23 +49,28 @@ export default function Search() {
         <label className="form-label" htmlFor="mobile_number">
           Enter a customer's mobile number
         </label>
-        <input
-          className="form-control"
-          name="mobile_number"
-          id="mobile_number"
-          type="tel"
-          onChange={handleInputChange}
-          value={mobileNumber}
-          required
-        />
+        <div className="input-group">
+          <input
+            className="form-control-sm rounded m-1"
+            name="mobile_number"
+            id="mobile_number"
+            placeholder="Mobile Number"
+            type="search"
+            onChange={handleInputChange}
+            value={mobileNumber}
+            aria-label="Search"
+            aria-describedby="search-addon"
+            required
+          />
 
-        <button
-          className="btn btn-primary m-1"
-          type="submit"
-          onClick={handleSubmit}
-        >
-          Find
-        </button>
+          <button
+            className="btn btn-outline-primary m-1"
+            type="submit"
+            onClick={handleSubmit}
+          >
+            Find
+          </button>
+        </div>
       </form>
 
       <table className="table table-hover m-1">
